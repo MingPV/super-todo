@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import NavBar from '@/components/NavBar.vue'
+import TodoList from '@/components/TodoList.vue'
 </script>
 
 <template>
+  <header>
+    <NavBar />
+  </header>
   <main>
-    <TheWelcome />
+    <TodoList />
   </main>
 </template>
