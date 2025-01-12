@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore'
 import { getAuth, connectAuthEmulator } from 'firebase/auth'
+import { connectDatabaseEmulator, getDatabase } from 'firebase/database'
 
 // Initialize Firebase with environment variables
 const firebaseConfig = {
@@ -18,7 +19,10 @@ const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 connectFirestoreEmulator(db, '127.0.0.1', 8080)
 
+const rt_db = getDatabase(app)
+connectDatabaseEmulator(rt_db, '127.0.0.1', 9000)
+
 const auth = getAuth()
 connectAuthEmulator(auth, 'http://127.0.0.1:9099')
 
-export { db, auth }
+export { db, rt_db, auth }

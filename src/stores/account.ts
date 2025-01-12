@@ -13,13 +13,15 @@ import {
 
 import { auth } from '@/services/firebase'
 
+import type { User } from 'firebase/auth'
+
 const provider = new GoogleAuthProvider()
 provider.addScope('https://www.googleapis.com/auth/contacts.readonly')
 
 export const useAccountStore = defineStore('user-account', {
   state: () => ({
     isLoggedIn: false,
-    user: {},
+    user: {} as User | null, // Correct typing for user as a Firebase User or null
   }),
   actions: {
     async checkAuthState() {

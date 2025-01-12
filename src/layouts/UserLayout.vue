@@ -19,8 +19,41 @@ const logout = async () => {
 </script>
 
 <template>
-  <div class="flex w-full flex-row justify-end">
+  <div class="flex w-full flex-row justify-between">
     <!-- ส่วนที่เกี่ยวข้องกับ login, logout -->
+    <div>
+      <div
+        class="btn btn-ghost"
+        @click="
+          () => {
+            router.push('/')
+          }
+        "
+      >
+        Home
+      </div>
+      <div
+        class="btn btn-ghost"
+        @click="
+          () => {
+            router.push('/friend')
+          }
+        "
+      >
+        Friend
+      </div>
+      <div
+        class="btn btn-ghost"
+        @click="
+          () => {
+            router.push('/todos')
+          }
+        "
+      >
+        TodoList
+      </div>
+    </div>
+
     <div
       v-if="!userAccountStore.isLoggedIn"
       class="btn btn-ghost"

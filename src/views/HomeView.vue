@@ -1,6 +1,5 @@
 <script setup lang="ts">
 // import NavBar from '@/components/NavBar.vue'
-import TodoList from '@/components/TodoList.vue'
 import UserLayout from '@/layouts/UserLayout.vue'
 import { useAccountStore } from '@/stores/account'
 const userAccountStore = useAccountStore()
@@ -17,10 +16,11 @@ const userAccountStore = useAccountStore()
             priorities, and track progress with ease. Plus, chat with your friends in real-time to
             collaborate and stay motivated together.
           </p>
-          <div>{{ userAccountStore.user }}</div>
+          <div>{{ userAccountStore.user?.email }}</div>
         </div>
       </div>
     </div>
-    <TodoList />
+    <!-- <TodoList /> -->
+    <!-- <ChatRoom /> -->
   </UserLayout>
 </template>

@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import { useAccountStore } from '@/stores/account'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
+import FriendView from '@/views/FriendView.vue'
+import TodoListView from '@/views/TodoListView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,9 +25,19 @@ const router = createRouter({
       component: LoginView,
     },
     {
-      path: '/Register',
-      name: 'Register',
+      path: '/register',
+      name: 'register',
       component: RegisterView,
+    },
+    {
+      path: '/friend',
+      name: 'friend',
+      component: FriendView,
+    },
+    {
+      path: '/todos',
+      name: 'todos',
+      component: TodoListView,
     },
   ],
 })
