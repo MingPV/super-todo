@@ -1,89 +1,50 @@
 <script setup lang="ts">
 /* import vue ตัวอื่นๆมา */
 
-import { useAccountStore } from '@/stores/account'
 import { useRouter } from 'vue-router'
 
-const userAccountStore = useAccountStore()
-
 const router = useRouter()
-
-const logout = async () => {
-  try {
-    await userAccountStore.logout()
-    window.location.reload()
-  } catch (error) {
-    console.log('error', error)
-  }
-}
 </script>
 
 <template>
-  <div class="flex w-full flex-row justify-between">
-    <!-- ส่วนที่เกี่ยวข้องกับ login, logout -->
-    <div>
-      <div
-        class="btn btn-ghost"
-        @click="
-          () => {
-            router.push('/')
-          }
-        "
-      >
-        Home
-      </div>
-      <div
-        class="btn btn-ghost"
-        @click="
-          () => {
-            router.push('/friend')
-          }
-        "
-      >
-        Friend
-      </div>
-      <div
-        class="btn btn-ghost"
-        @click="
-          () => {
-            router.push('/todos')
-          }
-        "
-      >
-        TodoList
-      </div>
-    </div>
-
-    <div
-      v-if="!userAccountStore.isLoggedIn"
-      class="btn btn-ghost"
-      @click="
-        () => {
-          router.push('/login')
-        }
-      "
-    >
-      Login
-    </div>
-    <div v-else class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-        <div class="w-10 rounded-full">
-          <img src="https://mikelopster.dev/mikelopster.da6b9a03.webp" />
+  <div class="flex flex-row h-screen bg-base-200">
+    <div class="flex flex-col justify-start px-8 mt-6">
+      <div class="flex justify-center items-center bg-red-100 px-16 py-4 mb-8">Logo</div>
+      <div class="flex flex-col gap-2">
+        <div
+          class="btn btn-ghost font-nunito"
+          @click="
+            () => {
+              router.push('/')
+            }
+          "
+        >
+          Home
         </div>
-      </label>
-      <ul
-        tabindex="0"
-        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-      >
-        <li>
-          <RouterLink to="/profile" class="justify-between"> Profile </RouterLink>
-        </li>
-        <li>
-          <a @click="logout">Logout</a>
-        </li>
-      </ul>
+        <div
+          class="btn btn-ghost font-nunito"
+          @click="
+            () => {
+              router.push('/friend')
+            }
+          "
+        >
+          Friend
+        </div>
+        <div
+          class="btn btn-ghost font-nunito"
+          @click="
+            () => {
+              router.push('/todos')
+            }
+          "
+        >
+          TodoList
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col w-full mx-4 rounded-md bg-red-200">
+      <slot></slot>
     </div>
   </div>
-
-  <slot></slot>
 </template>
